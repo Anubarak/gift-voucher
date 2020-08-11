@@ -5,11 +5,14 @@ use verbb\giftvoucher\helpers\CodeHelper;
 
 use Craft;
 use craft\base\Component;
+use craft\commerce\elements\Order as CommerceOrder;
 
-use craft\commerce\elements\Order;
-
-use yii\helpers\ArrayHelper;
-
+/**
+ * Class Order
+ * @package verbb\giftvoucher\storage
+ *
+ * @property \verbb\giftvoucher\elements\Code[]|int[]|string[] $codes
+ */
 class Order extends Component implements CodeStorageInterface
 {
     // Properties
@@ -35,10 +38,10 @@ class Order extends Component implements CodeStorageInterface
      * @author Robin Schambach
      * @since  2.0.16
      */
-    public function add($code, Order $order): bool
+    public function add($code, CommerceOrder $order): bool
     {
         $code = CodeHelper::getCode($code);
-        
+
         if ($code !== null && $this->fieldHandle !== null) {
             $codes = $order->getFieldValue($this->fieldHandle)->ids();
             $codes[] = (int)$code->id;
@@ -66,10 +69,10 @@ class Order extends Component implements CodeStorageInterface
      * @author Robin Schambach
      * @since  2.0.16
      */
-    public function remove($code, Order $order): bool
+    public function remove($code, CommerceOrder $order): bool
     {
         $code = CodeHelper::getCode($code);
-        
+
         if ($code !== null && $this->fieldHandle !== null) {
             $codes = $order->getFieldValue($this->fieldHandle)->ids();
 
@@ -102,7 +105,7 @@ class Order extends Component implements CodeStorageInterface
      * @author Robin Schambach
      * @since  2.0.16
      */
-    public function getCodes(Order $order): array
+    public function getCodes(CommerceOrder $order): array
     {
         if ($this->fieldHandle !== null) {
             return $order->getFieldValue($this->fieldHandle)->all();
@@ -121,7 +124,7 @@ class Order extends Component implements CodeStorageInterface
      * @author Robin Schambach
      * @since  2.0.16
      */
-    public function getCodeKeys(Order $order): array
+    public function getCodeKeys(CommerceOrder $order): array
     {
         $codes = $this->getCodes($order);
         $codeKeys = [];
@@ -137,7 +140,7 @@ class Order extends Component implements CodeStorageInterface
      * Set Codes
      *
      * @param \verbb\giftvoucher\elements\Code[]|int[]|string[] $codes
-     * @param \craft\commerce\elements\Order                    $order
+     * @param CommerceOrder                    $order
      *
      * @return bool
      *
@@ -147,7 +150,7 @@ class Order extends Component implements CodeStorageInterface
      * @author Robin Schambach
      * @since  2.0.16
      */
-    public function setCodes(array $codes, Order $order): bool
+    public function setCodes(array $codes, CommerceOrder $order): bool
     {
         if ($this->fieldHandle === null) {
             return false;

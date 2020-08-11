@@ -37,12 +37,17 @@ class m200104_000000_include_code_content extends Migration
                 $id = $row['id'] ?? null;
 
                 if ($id !== null) {
-                    Craft::$app->getDb()->createCommand()
-                        ->insert(Table::CONTENT, [
-                            'elementId' => $id,
-                            'siteId' => $primarySiteId,
-                        ])
-                        ->execute();
+                    try{
+                        Craft::$app->getDb()->createCommand()
+                            ->insert(Table::CONTENT, [
+                                'elementId' => $id,
+                                'siteId' => $primarySiteId,
+                            ])
+                            ->execute();
+                    }catch (\Exception $exception){
+                        // they allready have a content row
+                    }
+
                 }
             }
         }
