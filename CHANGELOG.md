@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.2 - 2020-10-02
+
+### fixed
+
+- check for correct component in PDFService, do not call undefined functions
+
 ## 2.5.1 - 2020-09-18 [CRITICAL]
 
 ### Fixed

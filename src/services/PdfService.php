@@ -20,6 +20,7 @@ use Dompdf\Options;
 
 use yii\base\Component;
 use yii\base\Exception;
+use yii\web\Request;
 
 class PdfService extends Component
 {
@@ -69,8 +70,12 @@ class PdfService extends Component
     {
         $settings = GiftVoucher::getInstance()->getSettings();
 
+        $format = null;
+
         $request = Craft::$app->getRequest();
-        $format = $request->getParam('format');
+        if($request instanceof Request){
+            $format = $request->getParam('format');
+        }
 
         if (null === $templatePath){
             $templatePath = $settings->voucherCodesPdfPath;
@@ -143,12 +148,16 @@ class PdfService extends Component
         FileHelper::isWritable($dompdfLogFile);
 
         $isRemoteEnabled = $settings->pdfAllowRemoteImages;
+        $chrootPath = $settings->pdfChrootPath;
 
         $options = new Options();
         $options->setTempDir($dompdfTempDir);
         $options->setFontCache($dompdfFontCache);
         $options->setLogOutputFile($dompdfLogFile);
         $options->setIsRemoteEnabled($isRemoteEnabled);
+        if($chrootPath !== null){
+            $options->setChroot($chrootPath);
+        }
 
         // Paper Size and Orientation
         $pdfPaperSize = $settings->pdfPaperSize;

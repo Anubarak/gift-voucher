@@ -44,6 +44,17 @@ use yii\base\Event;
 use fostercommerce\klaviyoconnect\services\Track;
 use fostercommerce\klaviyoconnect\models\EventProperties;
 
+/**
+ * Class GiftVoucher
+ * @package verbb\giftvoucher
+ * @since   02.10.2020
+ *
+ * @property-read array                              $cpNavItem
+ * @property-read mixed                              $settingsResponse
+ * @property-read \verbb\giftvoucher\models\Settings $settings
+ * @property-read bool                               $settingsUrl
+ * @method  Settings  getSettings()
+ */
 class GiftVoucher extends Plugin
 {
     // Public Properties
@@ -262,7 +273,7 @@ class GiftVoucher extends Plugin
         $projectConfigService->onAdd(VoucherTypes::CONFIG_VOUCHERTYPES_KEY . '.{uid}', [$voucherTypeService, 'handleChangedVoucherType'])
             ->onUpdate(VoucherTypes::CONFIG_VOUCHERTYPES_KEY . '.{uid}', [$voucherTypeService, 'handleChangedVoucherType'])
             ->onRemove(VoucherTypes::CONFIG_VOUCHERTYPES_KEY . '.{uid}', [$voucherTypeService, 'handleDeletedVoucherType']);
-        
+
         $projectConfigService->onAdd(CodesService::CONFIG_FIELDLAYOUT_KEY, [$codesService, 'handleChangedFieldLayout'])
             ->onUpdate(CodesService::CONFIG_FIELDLAYOUT_KEY, [$codesService, 'handleChangedFieldLayout'])
             ->onRemove(CodesService::CONFIG_FIELDLAYOUT_KEY, [$codesService, 'handleDeletedFieldLayout']);

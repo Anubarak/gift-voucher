@@ -22,6 +22,7 @@ class Settings extends Model
     public $voucherCodesPdfFilenameFormat = 'Voucher-{number}';
     public $stopProcessing = true;
     public $pdfAllowRemoteImages = false;
+    public $pdfChrootPath;
     public $pdfPaperSize = 'letter';
     public $pdfPaperOrientation = 'portrait';
     public $fieldLayoutId;
