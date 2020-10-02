@@ -1,5 +1,26 @@
 # Changelog
 
+## 2.5.1 - 2020-09-18 [CRITICAL]
+
+### Fixed
+- Fix a potential security vulnerability where the last-created voucher could be redeemed by any user.
+- Replace hard coded currency with order currency. (thanks @yingban).
+
+## 2.5.0 - 2020-08-31
+
+### Added
+- Add support for Craft 3.5 field designer for code elements.
+- Add support for Craft 3.5 field designer for voucher elements.
+
+### Changed
+- Now requires Craft 3.5+.
+- Now requires Craft Commerce 3.2+.
+
+## 2.4.3 - 2020-08-20
+
+### Fixed
+- Fix `getEditableVoucherTypeIds` not returning correctly.
+
 ## 2.4.2.1 - 2020-07-30
 
 ### Fixed
