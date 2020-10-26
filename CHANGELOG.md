@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.3 - 2020-10-60
+
+### changed
+
+- fix null null coalescing
+
 ## 2.5.2 - 2020-10-02
 
 ### fixed
