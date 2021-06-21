@@ -259,6 +259,10 @@ class Voucher extends Purchasable
         return $rules;
     }
 
+    /**
+     * @inheritDoc
+     * @return VoucherQuery
+     */
     public static function find(): ElementQueryInterface
     {
         return new VoucherQuery(static::class);

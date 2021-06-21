@@ -178,6 +178,10 @@ class Code extends Element
         return $rules;
     }
 
+    /**
+     * @inheritDoc
+     * @return CodeQuery
+     */
     public static function find(): ElementQueryInterface
     {
         return new CodeQuery(static::class);
