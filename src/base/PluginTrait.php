@@ -30,27 +30,73 @@ trait PluginTrait
     // Public Methods
     // =========================================================================
 
-    public function getCodes()
+
+    /**
+     * getCodes
+     *
+     *
+     * @return object|CodesService
+     *
+     * @author Robin Schambach
+     * @since  21.06.2021
+     */
+    public function getCodes(): CodesService
     {
         return $this->get('codes');
     }
 
-    public function getPdf()
+    /**
+     * getCodes
+     *
+     *
+     * @return object|null|PdfService
+     *
+     * @author Robin Schambach
+     * @since  15.01.2021
+     */
+    public function getPdf(): PdfService
     {
         return $this->get('pdf');
     }
 
-    public function getRedemptions()
+    /**
+     * getRedemptions
+     *
+     *
+     * @return \verbb\giftvoucher\services\RedemptionsService
+     *
+     * @author Robin Schambach
+     * @since  21.06.2021
+     */
+    public function getRedemptions(): RedemptionsService
     {
         return $this->get('redemptions');
     }
 
-    public function getVouchers()
+    /**
+     * getVouchers
+     *
+     *
+     * @return \verbb\giftvoucher\services\VouchersService
+     *
+     * @author Robin Schambach
+     * @since  21.06.2021
+     */
+    public function getVouchers(): VouchersService
     {
         return $this->get('vouchers');
     }
 
-    public function getVoucherTypes()
+    /**
+     * getVoucherTypes
+     *
+     *
+     * @return \verbb\giftvoucher\services\VoucherTypesService
+     *
+     * @author Robin Schambach
+     * @since  21.06.2021
+     */
+    public function getVoucherTypes(): VoucherTypesService
     {
         return $this->get('voucherTypes');
     }
